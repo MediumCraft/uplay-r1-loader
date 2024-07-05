@@ -13,7 +13,7 @@ env:
 
 jobs:
   build-64-bit:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
     
@@ -31,7 +31,7 @@ jobs:
         
 
   build-32-bit:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
     
