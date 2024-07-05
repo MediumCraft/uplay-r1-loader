@@ -1,0 +1,41 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build-64-bit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+    
+      - name: Build
+        run: cargo build --target=x86_64-pc-windows-msvc
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4.3.3
+        with:
+          name: uplay_r1_loader64
+          path: ./target/x86_64-pc-windows-msvc
+
+        
+
+  build-32-bit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+    
+      - name: Build
+        run: cargo build --target=i686-pc-windows-msvc
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4.3.3
+        with:
+          name: uplay_r1_loader
+          path: ./target/i686-pc-windows-msvc
